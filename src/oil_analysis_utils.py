@@ -52,3 +52,53 @@ def analyze_time_series(df):
     stats = df['Price'].describe()
     
     return decomposition, adf_result, stats 
+
+
+def analyze_event_periods(df, event_periods):
+    """
+    Analyze oil prices during specific event periods
+    
+    Parameters:
+    df: DataFrame with oil prices
+    event_periods: dict with event details {name: (start_date, end_date)}
+    """
+    results = {}
+    
+    for event_name, (start_date, end_date) in event_periods.items():
+        # Extract period data
+        period_data = df.loc[start_date:end_date]
+        
+        # Calculate metrics
+        metrics = {
+            'avg_price': period_data['Price'].mean(),
+            'price_volatility': period_data['Returns'].std() * np.sqrt(252),  # Annualized
+            'price_change': (period_data['Price'][-1] - period_data['Price'][0]) / period_data['Price'][0] * 100,
+            'max_drawdown': calculate_max_drawdown(period_data['Price']),
+            'avg_daily_volume': period_data['Returns'].abs().mean() * 100
+        }
+        
+        results[event_name] = metrics
+    
+    return pd.DataFrame(results).T
+
+def calculate_max_drawdown(prices):
+    """Calculate the maximum drawdown percentage"""
+    peak = prices.expanding(min_periods=1).max()
+    drawdown = (prices - peak) / peak
+    return drawdown.min() * 100
+
+def identify_structural_breaks(df, window=63):  # ~3 months
+    """
+    Identify potential structural breaks in the price series
+    """
+    # Calculate rolling mean and standard deviation
+    roll_mean = df['Price'].rolling(window=window).mean()
+    roll_std = df['Price'].rolling(window=window).std()
+    
+    # Calculate z-scores
+    z_scores = (df['Price'] - roll_mean) / roll_std
+    
+    # Identify significant breaks (z-score > 2 or < -2)
+    breaks = z_scores[abs(z_scores) > 2]
+    
+    return breaks
