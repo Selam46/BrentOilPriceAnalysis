@@ -1,49 +1,162 @@
-# Brent Oil Price Analysis
+# Brent Oil Price Analysis Project
 
 ## Project Overview
-This project analyzes historical Brent oil prices to understand price trends, volatility, and the impact of significant events on oil markets. The analysis covers daily prices from 1987 to 2022.
+A comprehensive analysis of Brent oil prices, including data processing, statistical modeling, and an interactive dashboard. This project analyzes historical price trends, implements predictive models, and provides a user-friendly interface for exploring oil market dynamics.
 
+## Tasks Overview
 
-## Data
-- **BrentOilPrices.csv**: Daily Brent oil price data from 1987 to 2022
-  - Columns: Date, Price
+### Task 1: Data Processing and Initial Analysis
+- **Data Cleaning and Preparation**
+  - Loading and processing daily Brent oil prices (1987-2022)
+  - Handling missing values and outliers
+  - Date format standardization
+  - Feature engineering
 
-## Analysis Components
-1. **Data Processing**
-   - Time series preparation
-   - Feature engineering
-   - Data cleaning
+- **Statistical Analysis**
+  - Time series decomposition
+  - Trend analysis
+  - Seasonality detection
+  - Volatility patterns
+  - Returns distribution
 
-2. **Modeling**
-   - ARIMA implementation
-   - SARIMA implementation
-   - Cross-validation
-   - Model evaluation metrics
+- **Event Impact Analysis**
+  - Major political events correlation
+  - Economic crisis impact assessment
+  - Market structure breaks identification
+  - Volatility clustering analysis
 
-3. **Visualization**
-   - Price trend analysis
-   - Model performance plots
-   - Residual analysis
-   - Prediction comparisons
+### Task 2: Time Series Modeling
+- **Model Implementation**
+  - ARIMA (AutoRegressive Integrated Moving Average)
+    - Parameter optimization
+    - Residual analysis
+    - Forecast generation
+  
+  - SARIMA (Seasonal ARIMA)
+    - Seasonal pattern incorporation
+    - Parameter tuning
+    - Prediction accuracy assessment
 
-## Analysis Features
-- Time series decomposition
-- Volatility analysis
-- Returns distribution
-- Statistical tests
-- Trend visualization
-- Time series analysis of oil prices
-- ARIMA and SARIMA modeling
-- Cross-validation and model evaluation
-- Event impact analysis
-- Volatility analysis
+- **Model Evaluation**
+  - Cross-validation implementation
+  - Performance metrics:
+    - RMSE (Root Mean Square Error)
+    - MAE (Mean Absolute Error)
+    - R² Score
+  - Residual analysis
+  - Model comparison
 
-## Model Evaluation
-- RMSE (Root Mean Square Error)
-- MAE (Mean Absolute Error)
-- R² Score
-- Cross-validation scores
+### Task 3: Interactive Dashboard
+- **Frontend Features** (React.js)
+  - Interactive price charts
+  - Multiple visualization types:
+    - Line charts
+    - Area charts
+    - Volume analysis
+    - Technical indicators
+  - Event timeline visualization
+  - Real-time data filtering
+  - Responsive design
+
+- **Backend Implementation** (Flask)
+  - RESTful API endpoints
+  - Data processing services
+  - Model integration
+  - Event data management
+
+## Technology Stack
+### Frontend
+- React.js
+- Material-UI
+- Recharts
+- Emotion styled components
+
+### Backend
+- Flask
+- Pandas
+- NumPy
+- Statsmodels
+
+### Data Analysis
+- Jupyter Notebooks
+- Scikit-learn
+- Matplotlib
+- Seaborn
+
+## Installation and Setup
+
+### Prerequisites
+- Python 3.8+
+- Node.js v14+
+- pip
+- npm
+
+### Data Analysis Environment
+
+pip install -r requirements.txt
+- Jupyter Notebooks
+
+### Dashboard Setup
+
+# Backend
+cd oil-price-dashboard/backend
+pip install -r requirements.txt
+python app.py
+
+# Frontend
+cd oil-price-dashboard
+npm install
+npm start
 
 ## Usage
-Run the Jupyter notebook in `notebook/oil_price_analysis.ipynb` and `notebook/model_building.ipynb` to view the analysis.
+
+### Data Analysis
+1. Open Jupyter notebooks in `notebook/` directory
+2. Run cells sequentially for analysis and modeling
+
+### Dashboard
+1. Start Flask backend server
+2. Launch React frontend application
+3. Access dashboard at http://localhost:3000
+
+## Features
+
+### Analysis Components
+- Time series decomposition
+- Event impact analysis
+- Volatility clustering
+- Return distributions
+- Technical indicators
+
+### Models
+- ARIMA implementation
+- SARIMA modeling
+- Cross-validation
+- Performance metrics
+
+### Dashboard
+- Interactive price charts
+- Event timeline
+- Technical analysis tools
+- Prediction visualization
+- Real-time filtering
+
+## Results and Findings
+- Model performance comparisons
+- Event impact quantification
+- Volatility patterns
+- Market trend analysis
+- Prediction accuracy metrics
+
+## Future Enhancements
+- Real-time price updates
+- Advanced ML models
+- Additional technical indicators
+- Enhanced event correlation
+- Mobile optimization
+- API integrations
+
+
+## License
+MIT License
 
